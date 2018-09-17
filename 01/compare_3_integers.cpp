@@ -6,11 +6,11 @@ int main()
 
     std::cin >> a >> b >> c;
 
-    if(b < a)
+    if (b < a)
         t = a, a = b, b = t;
-    if(c < b)
+    if (c < b)
         t = b, b = c, c = t;
-    if(b < a)
+    if (b < a)
         t = a, a = b, b = t;
 
     std::cout << a << ' ' << b << ' ' << c;
