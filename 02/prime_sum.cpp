@@ -7,7 +7,7 @@ int main()
 {
     for (int i = 2; i < 32; ++i)
         if (!comp[i])
-            for (int j = i << 1; j < 1001; j += i)
+            for (int j = i * i; j < 1001; j += i)
                 comp[j] = true;
 
     int a, n, sum = 0;

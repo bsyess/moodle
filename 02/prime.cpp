@@ -11,7 +11,7 @@ int main()
         if (!comp[i])
         {
             std::cout << std::setw(5) << i << (++nol % 5 ? "" : "\n");
-            for (int j = i << 1; j < 1001; j += i)
+            for (int j = i * i; j < 1001; j += i)
                 comp[j] = true;
         }
 
