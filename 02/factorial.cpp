@@ -2,31 +2,15 @@
 
 int main()
 {
-    long long n, twos = 0, fives = 0;
+    long long n, fives = 0;
 
     std::cin >> n;
 
-    if (n > 4)
-    {
-        while (n)
-        {
-            long long m = n--;
-            while ((m & 1) == 0)
-            {
-                m >>= 1;
-                ++twos;
-            }
-            while (m % 5 == 0)
-            {
-                m /= 5;
-                ++fives;
-            }
-        }
-        if (fives < twos)
-            twos = fives;
-    }
+    while (n > 4)
+        for (long long m = n--; m % 5 == 0; m /= 5)
+            ++fives;
 
-    std::cout << twos;
+    std::cout << fives;
 
     return 0;
 }
