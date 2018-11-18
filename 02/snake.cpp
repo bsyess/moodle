@@ -1,32 +1,28 @@
 #include <iostream>
+#include <vector>
+
+typedef std::vector<int> IntVector;
+
+int x = 1, y, dx = 1, dy = 0, N, i, t;
 
 int main()
 {
-    int n, a = 0, x = -1;
+    std::cin >> N;
+    std::vector<IntVector> v(N + 2, IntVector(N + 2, 0));
 
-    std::cin >> n;
-
-    int M[n][n], l = n, y = n - 1;
-    while (true)
+    for (y = N, i = 0; i < N + 2; ++i)
+        v[i][0] = v[i][N + 1] = v[0][i] = v[N + 1][y] = 1;
+    for (i = 0; i < N * N; x += dx, y += dy)
     {
-        for (int i = l; i; --i)
-            M[++x][y] = ++a;
-        if (--l == 0)
-            break;
-        for (int i = l; i; --i)
-            M[x][--y] = ++a;
-        for (int i = l; i; --i)
-            M[--x][y] = ++a;
-        if (--l == 0)
-            break;
-        for (int i = l; i; --i)
-            M[x][++y] = ++a;
+        v[x][y] = ++i;
+        if (v[x + dx][y + dy])
+            t = dx, dx = dy, dy = -t;
     }
 
-    for (x = 0; x < n; ++x)
+    for (x = 1; x <= N; ++x)
     {
-        for (y = 0; y < n; ++y)
-            std::cout << (y ? " " : "") << M[x][y];
+        for (y = 1; y <= N; ++y)
+            std::cout << (y == 1 ? "" : " ") << v[x][y];
         std::cout << std::endl;
     }
 
