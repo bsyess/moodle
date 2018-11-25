@@ -63,8 +63,9 @@ Cow& Cow::operator=(Cow const& c)
 
     // "Effective C++" by Scott Meyers
     char* originalHobby = hobby;
-    hobby = new char[std::strlen(c.hobby) + 1];
-    std::strcpy(hobby, c.hobby);
+    char* newHobby = new char[std::strlen(c.hobby) + 1];
+    std::strcpy(newHobby, c.hobby);
+    hobby = newHobby;
     delete[] originalHobby;
 
     return *this;
